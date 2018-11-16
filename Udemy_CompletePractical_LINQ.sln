@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Udemy_CompletePractical_LINQ", "Udemy_CompletePractical_LINQ\Udemy_CompletePractical_LINQ.csproj", "{9C38C474-1D61-4C87-98C6-E22BB7939AF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionalProgramming.Extending", "FunctionalProgramming.Extending\FunctionalProgramming.Extending.csproj", "{2E4B05CC-B60C-443C-8281-4F6F95853491}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterLinq", "MasterLinq\MasterLinq.csproj", "{4FB74399-3D92-4058-B82E-9D4B9FFD30F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9C38C474-1D61-4C87-98C6-E22BB7939AF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C38C474-1D61-4C87-98C6-E22BB7939AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C38C474-1D61-4C87-98C6-E22BB7939AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C38C474-1D61-4C87-98C6-E22BB7939AF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E4B05CC-B60C-443C-8281-4F6F95853491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E4B05CC-B60C-443C-8281-4F6F95853491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E4B05CC-B60C-443C-8281-4F6F95853491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E4B05CC-B60C-443C-8281-4F6F95853491}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FB74399-3D92-4058-B82E-9D4B9FFD30F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FB74399-3D92-4058-B82E-9D4B9FFD30F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FB74399-3D92-4058-B82E-9D4B9FFD30F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FB74399-3D92-4058-B82E-9D4B9FFD30F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
