@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MasterLinq
 {
-    class ChessPlayer
+    public class ChessPlayer
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,7 +18,7 @@ namespace MasterLinq
         public string Country
         {
             get {
-                Console.WriteLine($"Log Country: {_country}");
+                //Console.WriteLine($"Log Country: {_country}");
                 return _country;
             }
             set { _country = value; }

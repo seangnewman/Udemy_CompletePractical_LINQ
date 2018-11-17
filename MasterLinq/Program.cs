@@ -12,19 +12,92 @@ namespace MasterLinq
         static void Main(string[] args)
         {
             //WhyLinq.Demo();
-            //ParseCsvDemo();
+            //ParseCsv.ParseCsvDemo();
             //QueryFormsDemo();
-            //ParseCsvQueryDemo();
-
+            //ParseCsv.ParseCsvQueryDemo();
             //DemoNoYield();
             //Console.WriteLine("\nWith Yield\n");
             // DemoYield();
             //Defferred.Closure();
-            AlteringList.RemoveInFor();
-            Console.WriteLine();
-            AlteringList.RemoveInFor2();
+            //AlteringList.RemoveInFor();
+            //Console.WriteLine();
+            //AlteringList.RemoveInFor2();
+            //EnumerableDemo();
+            // Projections_with_Select();
+
+            //WhereDemo.Demo();
+            //ParseCsv.ParseCsv_FirstLastSingleDefault();
+            //ParseCsv.TakeWhile();
+            //ParseCsv.SkipWhile();
+            //ParseCsv.ParseCsv_SequenceEqual();
+            //ParseCsv.DemoDistinct();
+            //ParseCsv.DemoDistinctRating();
+            //ParseCsv.AnyAllContains();
+            //SelectMany.Demo();
+            ElementAtCount();
+
         }
 
+        private static void ElementAtCount()
+        {
+            var players = ChessPlayer.GetDemoList();
+
+            int count = players.Count( p => p.Country== "USA");
+            long longCount = players.LongCount();
+
+            ChessPlayer x = players.ElementAt(1);
+
+            Console.WriteLine($"Count: {count} Long Count: {longCount}  Player at Index 1 {x}");
+            Console.WriteLine();
+        }
+
+        private static void Projections_with_Select()
+        {
+            var players = ChessPlayer.GetDemoList().ToList();
+            var ratings = players.Select(p => p.Rating);
+            var lastNames = players.Select(p => p.LastName);
+            var FullNames = players.Select(p => $"{p.LastName} {p.FirstName}");
+
+            var anonymousType = players.Select((p, index) => new { Index = index, p.FirstName, p.LastName });
+
+            foreach (var rating in ratings)
+            {
+                Console.WriteLine(rating);
+            }
+            Console.WriteLine();
+            foreach (var type in anonymousType)
+            {
+                Console.WriteLine($"{type.FirstName } {type.LastName}");
+            }
+        }
+
+        private static void EnumerableDemo()
+        {
+            Console.WriteLine("Generating Range");
+
+            foreach (var r in Enumerable.Range(5, 8))
+            {
+                Console.WriteLine($"{r} ");
+            }
+
+            Console.WriteLine("\nRepeating");
+            foreach (var r in Enumerable.Repeat(10, 5))
+            {
+                Console.WriteLine($"{r} ");
+            }
+
+            Console.WriteLine("\nRandomNumbers");
+            foreach (var r in RandomStream.GenerateRandomNumber().Where(n => n > 0.7).Take(5))
+            {
+                Console.WriteLine($"{r.ToString("F2")} ");
+            }
+        }
+
+        public IEnumerable<int> GetDate()
+        {
+            // if no elements please do this
+            return Enumerable.Empty<int>();
+        }
 
         private static void ProcessCollection(IReadOnlyCollection<ChessPlayer> players)
         {
@@ -114,53 +187,6 @@ namespace MasterLinq
             return arg > 2700;
         }
 
-        private static void ParseCsvDemo()
-        {
-            var fileLocation = Path.Combine(Directory.GetCurrentDirectory(), "ChessStats", "Top100ChessPlayers.csv");
-            ParseCsv(fileLocation);
-        }
 
-        private static void ParseCsvQueryDemo()
-        {
-            var fileLocation = Path.Combine(Directory.GetCurrentDirectory(), "ChessStats", "Top100ChessPlayers.csv");
-            ParseCsvQuery(fileLocation);
-        }
-
-        private static void ParseCsv(string file)
-        {
-            var list = File.ReadAllLines(file)
-                            .Skip(1)
-                            .Select(ChessPlayer.ParseFideCsv)
-                            .OrderByDescending(p => p.Rating)
-                            .Take(10);
-
-            foreach (var player in list)
-            {
-                Console.WriteLine(player.ToString() ); 
-            }
-        }
-
-
-        private static void ParseCsvQuery(string file)
-        {
-            var list = File.ReadAllLines(file)
-                            .Skip(1)
-                            .Select(ChessPlayer.ParseFideCsv);
-
-
-            var filtered = list.Where(p => p.BirthYear > 1988)
-                            .OrderByDescending(p => p.Rating)
-                            .Take(10);
-
-            var filtered2 = from player in list
-                            where player.BirthYear > 1988
-                            orderby player.Rating descending
-                            select player;
-
-            foreach (var player in filtered2.Take(10))
-            {
-                Console.WriteLine(player.ToString());
-            }
-        }
     }
 }

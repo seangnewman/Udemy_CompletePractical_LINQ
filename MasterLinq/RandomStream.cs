@@ -8,6 +8,14 @@ namespace MasterLinq
 {
     public static class RandomStream
     {
-       
+       public static IEnumerable<double> GenerateRandomNumber()
+        {
+            var random = new Random();
+
+            while (true)
+            {
+                yield return random.NextDouble();
+            }
+        }
     }
 }

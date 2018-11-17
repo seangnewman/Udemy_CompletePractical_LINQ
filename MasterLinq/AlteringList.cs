@@ -55,7 +55,7 @@ namespace MasterLinq
 
         public static void RemoveAll()
         {
-            var list = new List<int> { 0,, 1, 2, 3, 4, 5 };
+            var list = new List<int> { 0, 1, 2, 3, 4, 5 };
 
             list.RemoveAll(x => x <= 3);
 
