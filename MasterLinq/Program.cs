@@ -34,8 +34,79 @@ namespace MasterLinq
             //ParseCsv.DemoDistinctRating();
             //ParseCsv.AnyAllContains();
             //SelectMany.Demo();
-            ElementAtCount();
+            //ElementAtCount();
+            // JoinGroupAggregate.Demo();
+            //JoinGroupAggregate.JoinGroupByDemo();
+            //JoinGroupAggregate.DemoGroupJoin();
+            //JoinGroupAggregate.ZipDemo();
+            //ParseCsv.ParseMinMaxSumAverage();
+            //ConcatUnionDemo();
+            //IntersectExceptDemo();
+            // Conversions.Demo();
+            //Conversions.ToArrayToList();
+            // Conversions.ToDictionary();
+            //Conversions.ToLookup();
 
+            //XmlLinq.CsvToXml();
+            //XmlLinq.ReadXml();
+            EfDemo.Run();
+
+
+        }
+        private static void IntersectExceptDemo()
+        {
+
+            var products1 = new List<string>() { "milk", "butter", "soda" };
+            var products2 = new List<string>() { "coffee", "Butter", "milk", "pizza" };
+
+            var intersect = products1.Intersect(products2, new ProductsComparer());
+            var except = products1.Except(products2, new ProductsComparer());
+
+            Console.WriteLine("Intersect");
+            foreach (var item in intersect)
+            {
+                Console.WriteLine($"{item}, ");
+            }
+
+            Console.WriteLine("\n\nExcept");
+            foreach (var item in except)
+            {
+                Console.WriteLine($"{item}, ");
+            }
+
+        }
+        private static void ConcatUnionDemo()
+        {
+            var products1 = new List<string>() { "milk", "butter", "soda" };
+            var products2 = new List<string>() { "coffee", "Butter", "milk", "pizza" };
+
+
+
+            Console.WriteLine("Concat");
+            foreach (var product in products1.Concat(products2))
+            {
+                Console.Write($"{product}, ");
+            }
+
+            Console.WriteLine("\nDistinct Concat");
+            foreach (var product in products1.Concat(products2).Distinct())
+            {
+                Console.Write($"{product}, ");
+            }
+            Console.WriteLine("\nUnion");
+
+              foreach (var product in products1.Union(products2))
+            {
+                Console.Write($"{product}, ");
+            }
+
+            Console.WriteLine("\n\nCustom Union");
+
+            foreach (var product in products1.Union(products2, new ProductsComparer()))
+            {
+                Console.Write($"{product}, ");
+            }
+            Console.WriteLine();
         }
 
         private static void ElementAtCount()

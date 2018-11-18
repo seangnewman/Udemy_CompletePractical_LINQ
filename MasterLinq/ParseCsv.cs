@@ -16,6 +16,13 @@ namespace MasterLinq
             ParseCsvExpression(fileLocation);
         }
 
+
+        public static void ParseMinMaxSumAverage()
+        {
+            var fileLocation = Path.Combine(Directory.GetCurrentDirectory(), "ChessStats", "Top100ChessPlayers.csv");
+            MinMaxSumAverage(fileLocation);
+        }
+
         public static void ParseCsvQueryDemo()
         {
             var fileLocation = Path.Combine(Directory.GetCurrentDirectory(), "ChessStats", "Top100ChessPlayers.csv");
@@ -41,6 +48,28 @@ namespace MasterLinq
             bool all = players.All(p => p.Rating > 2500);
 
             Console.WriteLine($"Contains = {contains}, Any = {any} and All = {all}");
+
+        }
+
+        public static void MinMaxSumAverage(string file)
+        {
+            var list = File.ReadAllLines(file)
+                            .Skip(1)
+                            .Select(s => ChessPlayer.ParseFideCsv(s))
+                            .Where(p => p.BirthYear > 1988)
+                            .OrderByDescending(p => p.Rating)
+                            .Take(10)
+                            .ToList();
+
+            Console.WriteLine($"The lowest rating in top 10: {list.Min(x => x.Rating)}");
+            Console.WriteLine($"The Maxiumum rating in top 10: {list.Max(x => x.Rating)}");
+            Console.WriteLine($"The average rating in top 10: {list.Average(x => x.Rating)}");
+
+            var data = new List<int>() { 1, 20, 37, 93, 107, 509, 670, 35 };
+            var total = data.Sum(i => i);
+
+            Console.WriteLine($"The Sum of the integers is : { total}");
+
 
         }
         public static void DemoDistinct()

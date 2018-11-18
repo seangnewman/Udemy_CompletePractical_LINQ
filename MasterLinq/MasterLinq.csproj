@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,18 +46,29 @@
   <ItemGroup>
     <Compile Include="AlteringList.cs" />
     <Compile Include="ChessPlayer.cs" />
+    <Compile Include="ChessPlayerDb.cs" />
+    <Compile Include="Conversions.cs" />
     <Compile Include="DeferredExecution.cs" />
+    <Compile Include="EfDemo.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="GenericsConversion.cs" />
+    <Compile Include="JoinGroupAggregate.cs" />
     <Compile Include="LinqExtensions.cs" />
     <Compile Include="ParseCsv.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="PlayerComparer.cs" />
+    <Compile Include="ProductsComparer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomStream.cs" />
     <Compile Include="RatingsComparer.cs" />
     <Compile Include="SelectMany.cs" />
+    <Compile Include="Team.cs" />
+    <Compile Include="Tournament.cs" />
     <Compile Include="WhereDemo.cs" />
     <Compile Include="WhyLinq.cs" />
+    <Compile Include="XmlLinq.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
